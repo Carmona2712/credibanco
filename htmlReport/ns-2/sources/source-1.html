@@ -1,0 +1,154 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CardControllerAdvice</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nexos.credibanco.controller.advice</a>
+</div>
+
+<h1>Coverage Summary for Class: CardControllerAdvice (com.nexos.credibanco.controller.advice)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CardControllerAdvice</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33,3%
+  </span>
+  <span class="absValue">
+    (2/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    15,4%
+  </span>
+  <span class="absValue">
+    (2/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.nexos.credibanco.controller.advice;
+&nbsp;
+&nbsp;import com.nexos.credibanco.controller.CardController;
+&nbsp;import com.nexos.credibanco.exceptions.NotFoundException;
+&nbsp;import lombok.extern.log4j.Log4j2;
+&nbsp;import org.hibernate.service.spi.ServiceException;
+&nbsp;import org.springframework.http.HttpStatus;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.web.bind.annotation.ExceptionHandler;
+&nbsp;import org.springframework.web.bind.annotation.ResponseStatus;
+&nbsp;import org.springframework.web.bind.annotation.RestControllerAdvice;
+&nbsp;import org.springframework.web.client.HttpClientErrorException;
+&nbsp;import org.springframework.web.context.request.WebRequest;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.HashMap;
+&nbsp;
+&nbsp;@RestControllerAdvice(assignableTypes = CardController.class)
+<b class="fc">&nbsp;@Log4j2</b>
+<b class="fc">&nbsp;public class CardControllerAdvice {</b>
+&nbsp;
+&nbsp;    @ExceptionHandler(ServiceException.class)
+&nbsp;    @ResponseStatus(HttpStatus.CONFLICT)
+&nbsp;    public ResponseEntity&lt;?&gt; handleServiceException(ServiceException ex, WebRequest request) {
+<b class="nc">&nbsp;        log.error(ex.getMessage(), ex);</b>
+<b class="nc">&nbsp;        return ResponseEntity.status(HttpStatus.CONFLICT).body(messageError(ex.getMessage(),HttpStatus.CONFLICT));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ExceptionHandler(NotFoundException.class)
+&nbsp;    @ResponseStatus(HttpStatus.NOT_FOUND)
+&nbsp;    public ResponseEntity&lt;?&gt; handleServiceException(NotFoundException ex, WebRequest request) {
+<b class="nc">&nbsp;        log.error(ex.getMessage(), ex);</b>
+<b class="nc">&nbsp;        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(messageError(ex.getMessage(),HttpStatus.NOT_FOUND));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ExceptionHandler(HttpClientErrorException.class)
+&nbsp;    @ResponseStatus(HttpStatus.BAD_REQUEST)
+&nbsp;    public ResponseEntity&lt;?&gt; handleHttpClientErrorException(HttpClientErrorException ex, WebRequest request) {
+<b class="nc">&nbsp;        log.error(ex.getMessage(), ex);</b>
+<b class="nc">&nbsp;        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageError(ex.getMessage(),HttpStatus.BAD_REQUEST));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static HashMap&lt;String, String&gt; messageError(String message,HttpStatus httpStatus){
+<b class="nc">&nbsp;        HashMap&lt;String, String&gt; map = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        map.put(&quot;status&quot;, String.valueOf(httpStatus.value()));</b>
+<b class="nc">&nbsp;        map.put(&quot;message&quot;, message);</b>
+<b class="nc">&nbsp;        map.put(&quot;date&quot;, new Date().toString());</b>
+<b class="nc">&nbsp;        return map;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-21 02:44</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ICardService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nexos.credibanco.service</a>
+</div>
+
+<h1>Coverage Summary for Class: ICardService (com.nexos.credibanco.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ICardService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.nexos.credibanco.service;
+&nbsp;
+&nbsp;import com.nexos.credibanco.model.Card;
+&nbsp;
+&nbsp;import java.util.HashMap;
+&nbsp;
+&nbsp;public interface ICardService {
+&nbsp;
+&nbsp;    public Card save(Card card);
+&nbsp;    public Card findCard(Long id);
+&nbsp;    public Card findCardByNumber(String cardNumber);
+&nbsp;
+&nbsp;    public HashMap&lt;String,String&gt; generateCardNumber(String productId);
+&nbsp;    public HashMap&lt;Object,Object&gt; cardEnroll(String cardNumber);
+&nbsp;    public String cardLock(String cardNumber);
+&nbsp;    public HashMap&lt;Object,Object&gt; rechargeBalance(String cardNumber, Double amount);
+&nbsp;    public HashMap&lt;Object,Object&gt; balanceQuery(String cardId);
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-20 21:43</div>
+</div>
+</body>
+</html>
